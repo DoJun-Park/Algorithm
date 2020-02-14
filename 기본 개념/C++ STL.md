@@ -1,4 +1,6 @@
-## STL 이란?
+STL 이란?
+================
+
 
 STL을 설명하기 전에 알고리즘 풀이 때 C++을 사용하는 이유를 말하면,		
 
@@ -12,7 +14,8 @@ STL을 설명하기 전에 알고리즘 풀이 때 C++을 사용하는 이유를
 
 **STL**은 크게 **Container 와 Iterator, Algorithm**으로 분류된다.			
 
-### 1. Container
+1. Container
+-----------------------------
 
 + **Sequence Container**
 
@@ -28,7 +31,8 @@ STL을 설명하기 전에 알고리즘 풀이 때 C++을 사용하는 이유를
 
   
 
-### 2. Iterator & Algorithm
+2. Iterator & Algorithm
+---------------------------
 
 + **RandomAccessIterator**
 
