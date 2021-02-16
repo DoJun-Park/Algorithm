@@ -1,6 +1,12 @@
-def round_num(num):
-    rnd_num = round(num)
-    print(rnd_num)
+number = 20
+greeting = '안녕하세요'
+place = "부산광역시"
 
-round_num(10.4)
-round_num(2.7)
+print(number, '번 손님', greeting, ' 여기는 ', place, '입니다')
+
+base = '{}번 손님, {}에 오신 것을 {}!'
+new_way = base.format(number, place, greeting)
+
+
+print(base)
+print(new_way)
