@@ -1,12 +1,22 @@
-number = 20
-greeting = '안녕하세요'
-place = "부산광역시"
+list1 = [12,13,14]
+print(list1)
 
-print(number, '번 손님', greeting, ' 여기는 ', place, '입니다')
+list1.append(15)
+print(list1)
 
-base = '{}번 손님, {}에 오신 것을 {}!'
-new_way = base.format(number, place, greeting)
+list2 = list1 + [16]
 
+list3 = list1 + list2
+print(list3)
 
-print(base)
-print(new_way)
+n = 15
+ownership = n in list3
+print(ownership)
+
+print(list3)
+
+del list3[0]
+print(list3)
+
+list3.remove(16)
+print(list3)
