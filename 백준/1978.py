@@ -1,19 +1,23 @@
-n = input()
+N = int(input())
 N_list = list(map(int, input().split()))
-i = 0
-prime_num_cnt = 0
 
-while True:
-    for j in range(1,N_list[i]+1):
-        N_value = N_list[i]
-        if N_value%2 == 0:
-            continue
-        else:
-            for k in range(N_value-1, 2, -1):
-                if N_value % k == 0:
-                    continue
 
-                prime_num_cnt += 1
+def chk_prime_num(x):
+    if x <2:
+        return False
+    j=2
+    while j*j <= x:
+        if x%j == 0:
+            return False
+        j += 1
 
+    return True
+
+prime_num_cnt=0
+
+for i in range(0,N):
+
+    if chk_prime_num(N_list[i]):
+        prime_num_cnt +=1
 
 print(prime_num_cnt)
