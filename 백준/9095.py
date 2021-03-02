@@ -6,6 +6,7 @@ def recur(sum, goal):
         return 0
 
     ans_cnt = 0
+
     for i in range(1,4):
         ans_cnt += recur(sum + i, goal)
     return ans_cnt
@@ -13,5 +14,5 @@ def recur(sum, goal):
 
 for _ in range(t):
     n = int(input())
-    print(recur(0,n))
+    # print(recur(0,n))
 
