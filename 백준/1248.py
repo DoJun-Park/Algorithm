@@ -34,7 +34,6 @@ def chk(index):
     return True
 
 
-
 def recur(index):
     if index == N: #0부터 시작했으므로
         return True
