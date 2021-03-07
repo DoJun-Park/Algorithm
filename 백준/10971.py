@@ -1,7 +1,10 @@
 N = int(input())
 cost = [list(map(int, input().split())) for _ in range(N)]
 
-def next_permu(a):   
+def next_permu(a):
+    if permu[0] != 0: #순회한다는 점을 이용하면 앞자리가 0일때 모든 경우를 확인하기 때문에 0이 아니면 끝냄
+        return False
+
     i = N-1
     
     while permu[i] <= permu[i-1]:
