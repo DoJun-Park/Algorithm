@@ -1,6 +1,6 @@
 N = int(input())
 
-cost = [(0,0,0)] + [tuple(map(int, input().split())) for _ in range(N)]
+cost = [[0,0,0]] + [tuple(map(int, input().split())) for _ in range(N)]
 mem = [[0,0,0] for _ in range(N+1)]
 
 
