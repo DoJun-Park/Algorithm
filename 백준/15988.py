@@ -1,6 +1,6 @@
 T = int(input())
 mem = [0] * 1000001
-mem[0] = 1
+mem[0] = 0
 
 for i in range(1,1000001):
     if i >= 1 :
