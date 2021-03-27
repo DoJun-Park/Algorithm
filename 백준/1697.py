@@ -1,17 +1,21 @@
 from collections import deque
-MAX = 200000
-check = [False]*(MAX+1)
-dist = [-1]*(MAX+1)
-n,m = map(int,input().split())
-check[n] = True
-dist[n] = 0
+
+N,K = map(int, input().split())
+Max = 200000
+chk = [False] * (Max+1)
+dist = [0] * (Max+1)
 q = deque()
-q.append(n)
+chk[N] = True
+q.append(N)
+
+
 while q:
-    now = q.popleft()
-    for nxt in [now-1, now+1, now*2]:
-        if 0 <= nxt <= MAX and check[nxt] == False:
-            check[nxt] = True
-            dist[nxt] = dist[now] + 1
-            q.append(nxt)
-print(dist[m])
+    X = q.popleft()
+    for i in [X-1, X+1, X*2]:
+        if 0 <=i<= Max and chk[i] == False:
+            chk[i] = True
+            q.append(i)
+            dist[i] = dist[X]+1
+
+print(dist[K])
+
