@@ -54,7 +54,6 @@ def case5(a):
             b[i][j] = a[i+n//2][j]
     return b
 
-
 def case6(a):
     n = len(a)
     m = len(a[0])
