@@ -1,3 +1,7 @@
+
+
+# 입력받은 문자열을 첫 인덱스부터 중앙값으로 정해서 왼쪽/오른쪽으로 이동하면서 같은지 비교
+
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         s_len = len(s)
@@ -28,7 +32,6 @@ class Solution:
                     right += 1
                 else:
                     break
-            
         return ans
 
 
