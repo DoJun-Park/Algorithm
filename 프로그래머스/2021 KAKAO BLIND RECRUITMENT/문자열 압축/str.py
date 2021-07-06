@@ -25,39 +25,51 @@
 
 """
 [문제 해결 방법]
-1부터 쪼개면서 최소의 경우 찾는다.
+문자열의 길이가 1 이면 압축된 길이도 무조거 1이기 때문에 1이 답이다.
+문자열의 길이가 2 이상인 경우, 1부터 문자열의 길이만큼의 크기(size)로 문자열을 나눈다.
+그리고 나눠진 문자열의 인덱스를 옮겨가며 비교해서 압축 여부를 체크한다.
+반복되는 문자열이 있을 경우, compressed_cnt 변수에 카운트해주어 압축된 문자열의 길이를 구할 때 활용한다.
+모든 size에 대해 압축된 문자열의 길이를 answer 리스트에 추가하여 가장 작은 값을 return한다.
+
+[트러블 슈팅]
+처음 문제를 풀 때, 반복되는 문자열의 수가 1자리수(2~9)라고 생각하여 압축된 문자열의 길이에 1만을 더해줬다.
+하지만 반복되는 문자열의 수가 2자리수 또는 3자리수가 될 수도 있기 때문에 compressed_cnt를 문자열로 바꾼 후, 이 문자열의 
+길이를 더해줌으로써 문제를 해결했다.
+
+그리고 size 크기로 나눠진 문자열의 마지막 문자가 size 만큼의 크기가 안 될수도 있는 것을 고려하지 못했다.
+이것을 고려하여 마지막 문자열에 대해서는 split[-1]의 길이를 구해 문제를 해결하였다.
 """
 
+
 def solution(s):
-    answer = 1001
+    answer = []
     s_len = len(s)
 
-    
-    for size in range(1,s_len+1):
-        split = [s[i:i+size] for i in range(0,s_len, size)]
-        compressed_cnt =0 #문자열이 압축되는 경우의 갯수
-        compressed_tmp_str = "" #압축되는 문자열을 저장하기 위한 변수
-        split_len = len(s)
+    if s_len == 1: #문자열의 길이가 1인 경우
+        answer.append(1)
 
+    else:
+        for size in range(1,s_len): #1부터 입력받은 문자열의 길이만큼 split하기 위해 1~len(s)만큼 반복
+            split = [s[i:i+size] for i in range(0,s_len, size)] #size 만큼 문자열 split
+            compressed_cnt =1 #반복되는 문자열의 수
+            split_len = 0 #압축된 문자열의 길이
 
-        for i in range(0,len(split)-1):
-            if split[i] == split[i+1]:
-                if compressed_tmp_str != split[i]:
-                    split_len = split_len+1 # 압축하려는 문자열이 다른 경우 새롭게 숫자가 추가되기 때문에
-                    compressed_tmp_str = split[i]
+            for i in range(1,len(split)):
+                if split[i-1] == split[i]: #문자열이 반복되는 경우
+                    compressed_cnt += 1
+                else:
+                    if compressed_cnt != 1: #만약 compressed_cnt이 1이 아닌경우, 이전에 반복되는 문자열 존재
+                        split_len += len(str(compressed_cnt)) + len(split[i-1])
+                        compressed_cnt = 1
+                    else: # 이전에 반복된 문자열이 존재하지 않는 경우
+                        split_len += len(split[i-1])
+            
+            # 마지막 문자열에 대해서 처리
+            if compressed_cnt != 1: 
+                split_len += len(str(compressed_cnt)) + len(split[-1])
+            else :
+                split_len += len(split[-1])
 
-                compressed_cnt = compressed_cnt + 1 
-                
+            answer.append(split_len)
 
-        split_len = split_len - (size * compressed_cnt)
-
-        answer = min(answer, split_len)
-
-    # print(answer)
-    return answer
-
-    # print(answer)
-    # print(min(answer))
-    # return min(answer)
-
-solution("abcabcabcabcdededededede")
+    return min(answer)
